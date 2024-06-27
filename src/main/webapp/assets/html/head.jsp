@@ -4,7 +4,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Desafío - JEE y Java Server Pages (II)</title>
+    <title>Desafio - JEE y Java Server Pages (II)</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/img/lm.icono.jpg" />
     <!-- Bootstrap icons-->
