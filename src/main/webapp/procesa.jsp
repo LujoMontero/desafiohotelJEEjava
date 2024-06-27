@@ -1,24 +1,21 @@
-<%@ page import="org.example.desafiojeejavaserverpagesii.business.EventoBusiness" %>
-<%@ page import="org.example.desafiojeejavaserverpagesii.model.Evento" %>
+<%@ page import="org.example.desafiojeejavaserverpagesii.business.HabitacionBusiness" %>
+<%@ page import="org.example.desafiojeejavaserverpagesii.model.Habitacion" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
         // Recepcion valores dede request
-        String nombreComprador = request.getParameter("nombre");
-        String apellidoComprador = request.getParameter("apellido");
-        String direccionComprador = request.getParameter("direccion");
-        int numeroComprador = Integer.parseInt(request.getParameter("numero"));
-        int cantidadTickets = Integer.parseInt(request.getParameter("cantidad"));
-    int idEvento = Integer.parseInt(request.getParameter("idevento"));
-// Librerias requeridas
-    EventoBusiness eventob = new EventoBusiness();
-// incializa Objeto Evento
-    Evento evento = new Evento();
-    evento.setId(idEvento);
-// Busca y recoge informacion de evento seleccionado
-    evento = eventob.getEventobyID(evento);
-// Obtiene el valor a pagar por la cantidad de tickets seleccionados
-    int valorPagar = eventob.calculaValorCompra(evento.getPrecio(),
-            cantidadTickets);
+    String nombreComprador = request.getParameter("nombre");
+    String apellidoComprador = request.getParameter("apellido");
+    String emailComprador = request.getParameter("email");
+    String medioPagoComprador = request.getParameter("medio_pago");
+    int cantidadDias = Integer.parseInt(request.getParameter("dias"));
+    String fechaComprador = request.getParameter("fecha_entrada");
+    int idhabitacion = Integer.parseInt(request.getParameter("idhabitacion"));
+
+    HabitacionBusiness habitacionb = new HabitacionBusiness();
+    Habitacion habitacion = new Habitacion();
+    habitacion.setId(idhabitacion);
+    habitacion = habitacionb.getHabitacionbyID(habitacion);
+    int valorPagar = habitacionb.calculaValorCompra(habitacion.getPrecio(), cantidadDias);
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,8 +28,8 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row justify-content-center">
                 <h1>
-                    Detalle Solictud Venta Ticket:
-                    <strong><%=evento.getNombre()%></strong>
+                    Detalle Solictud Habitacion:
+                    <strong><%=habitacion.getNombre()%></strong>
                 </h1>
                 <hr/>
             </div>
@@ -60,20 +57,25 @@
                 <tr>
                     <th scope="row">3</th>
                     <td>Dirección</td>
-                    <td><%=direccionComprador%></td>
+                    <td><%=emailComprador%></td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
-                    <td>Numero</td>
-                    <td><%=numeroComprador%></td>
+                    <td>Medio de Pago</td>
+                    <td><%=medioPagoComprador%></td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
-                    <td>Cantidad Tickets</td>
-                    <td><%=cantidadTickets%></td>
+                    <td>Dias</td>
+                    <td><%=cantidadDias%></td>
                 </tr>
                 <tr>
                     <th scope="row">6</th>
+                    <td>Fecha Entrada</td>
+                    <td><%=fechaComprador%></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
                     <td>Valor a Pagar</td>
                     <td><strong>CL$
                         <%=valorPagar%></strong></td>

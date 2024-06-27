@@ -50,7 +50,7 @@ row-cols-xl-4 justify-content-center">
                             </div>
                         </div>
                         <input type="radio" id="html"
-                               name="idevento"
+                               name="idhabitacion"
 
                                value="<%=listaHabitaciones.get(x).getId()%>" checked>
                         <div class="card-footer p-4 pt-0
@@ -73,7 +73,7 @@ border-top-0 bg-transparent">
     <!-- Formulario -->
     <section>
         <div class="container px-4 px-lg-5 mt-5">
-            <h1>Información de Venta</h1>
+            <h1>Informacion de Reserva Habitacion</h1>
             <hr />
             <div class="row g-3">
                 <div class="col-md-6">
@@ -89,30 +89,33 @@ border-top-0 bg-transparent">
                         value="Salas Melinao">
                 </div>
                 <div class="col-md-6">
-                    <label for="direccion" class="formlabel">Dirección</label> <input
+                    <label for="email" class="formlabel">email</label> <input
                         type="text" class="form-control"
-                        id="direccion" name="direccion"
-                        value="Av. 15 Norte">
+                        id="email" name="email"
+                        value="correo@...com">
                 </div>
                 <div class="col-md-2">
-                    <label for="numero" class="formlabel">Número</label> <input
-                        type="text" class="form-control"
-                        id="numero" name="numero"
-                        value="487">
+                    <label for="medio_pago" class="formlabel">Medio de Pago</label>
+                    <select id="medio_pago" name="medio_pago" class="form-select">
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Debito">Debito</option>
+                        <option value="Credito">Credito</option>
+                    </select>
                 </div>
+
                 <div class="col-md-4">
-                    <label for="cantidad" class="formlabel">Cantidad de
-                        Tickets</label> <select
-                        id="cantidad" name="cantidad" class="form-select">
+                    <label for="dias" class="formlabel">Dias</label>
+                    <select id="dias" name="dias" class="form-select">
+                        <% for (int x = 0; x < 30; x++) {%>
+                        <option value="<%=x + 1%>"><%=x + 1%> Dia(s) </option>
                         <%
- for (int x = 0; x < 50; x++) {%>
-                    <option value="<%=x + 1%>"><%=x +
-                            1%> Ticket(s)
-                    </option>
-                    <%
-                        }
-                    %>
-                </select>
+                            }
+                        %>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="fecha_entrada" class="formlabel">Fecha Entrada</label>
+                    <input type="date" id="fecha_entrada" name="fecha_entrada" class="form-control" value="n">
                 </div>
                 <div class="col-12">
                     <hr />
